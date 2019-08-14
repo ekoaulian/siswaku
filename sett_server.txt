@@ -1,0 +1,17 @@
+C:\Windows\System32\drivers\etc\hosts
+127.0.0.1 siswaku
+
+C:\xampp\apache\conf\extra\httpd-vhosts.conf
+<VirtualHost *:80>
+    ServerName siswaku
+    ServerAlias siswaku
+    DocumentRoot "C:\xampp\htdocs\siswaku\public"
+    <Directory "C:\xampp\htdocs\siswaku\public">
+    Options Indexes FollowSymLinks Includes ExecCGI
+    Allow from all
+    Require all granted
+    </Directory>
+</VirtualHost>
+
+C:\xampp\apache\conf\httpd.conf
+183 hilangkan tanda pagar
