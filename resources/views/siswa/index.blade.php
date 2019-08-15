@@ -12,6 +12,7 @@
 					<th>Nama Siswa</th>
 					<th>Tanggal Lahir</th>
 					<th>Jenis Kelamin</th>
+					<th>Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,6 +22,7 @@
 					<td> {{ $siswa->nama_siswa }} </td>
 					<td> {{ $siswa->tanggal_lahir }} </td>
 					<td> {{ $siswa->jenis_kelamin }} </td>
+					<td> {{ link_to('siswa/' . $siswa->id, 'Detail', ['class' => 'btn btn-info btn-sm']) }} </td>
 				</tr>
 				<?php endforeach ?>
 			</tbody>
@@ -31,11 +33,14 @@
 	@endif	
 </div>
 
+	<div class="pull-left">
+		<b> Jumlah siswa : {!! $jumlah_siswa !!} </b>
+	</div>
+
 @stop
 
 @section('footer')
     <div id="footer">
         <p>&copy; 2019 Laravel App</p>
     </div>
-
 @stop
