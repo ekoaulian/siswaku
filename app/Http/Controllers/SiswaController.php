@@ -20,13 +20,23 @@ class SiswaController extends Controller
 
     //halaman create
     public function create() {
-        return view('siswa.create');
+        $halaman = 'siswa';
+        return view('siswa.create', compact('halaman'));
     }
 
     //simpan dalam request
     public function store(Request $request) {
-        $siswa = $request->all();
-        return $siswa;
+        $siswa = new Siswa;
+        $siswa -> nisn          = $request->nisn;
+        $siswa -> nama_siswa    = $request->nama_siswa;
+        $siswa -> tanggal_lahir = $request->tanggal_lahir;
+        $siswa -> jenis_kelamin      = $request->jenis_kelamin;
+        $siswa -> save();
+        return redirect('siswa');
+
+        //tampilan data belum ke database 
+        // $siswa = $request->all();
+        // return $siswa;
     }
 
     //show siswa

@@ -31,12 +31,23 @@
 	@else
 		<p>Tidak ada data siswa</p>
 	@endif	
-</div>
 
-	<div class="pull-left">
-		<b> Jumlah siswa : {!! $jumlah_siswa !!} </b>
+	<div class="table-button">
+		<div class="pull-left">
+			<b> Jumlah siswa : {!! $jumlah_siswa !!}  </b>
+		</div>
+		<div class="pull-right">
+			Halaman
+		</div>
+	</div>
+	<br/>
+	<div class="botton-nav">
+		<div>
+			<a href="siswa/create" class="btn btn-success">Tambah siswa</a>
+		</div>
 	</div>
 
+</div>
 @stop
 
 @section('footer')

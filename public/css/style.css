@@ -17,3 +17,18 @@ body {
     text-align: center;
     padding-top: 20px;
 }
+
+.table-bottom {
+    height: 40px;
+    padding: 10px 0;
+    border-top: 10px solid #000;
+    border-bottom: 1 px solid #000;   
+}
+
+.bottom-nav {
+    margin-top: 20px;
+}
+
+h2 {
+    border-bottom: #000
+}
