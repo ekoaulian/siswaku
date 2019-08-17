@@ -9,6 +9,7 @@
     <link href="{{ asset ('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
+    
     <div class="container">
         @include('navbar')
         @yield('main')

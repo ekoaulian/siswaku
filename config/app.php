@@ -136,6 +136,7 @@ return [
 
     'providers' => [
 
+        App\Providers\SiswakuAppServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
         /*
