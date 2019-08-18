@@ -9,11 +9,11 @@ class SiswaController extends Controller
 {
     public function index() {
         
-        $siswa_list = Siswa::all();  
+        $siswa_list = Siswa::orderBy('nama_siswa' , 'asc') -> paginate(10);  
         //sortir by descending
         //$siswa_list = Siswa::all()->sortByDesc('tanggal_lahir');
         //menampilkan jumlah siswa
-        $jumlah_siswa = $siswa_list->count();
+        $jumlah_siswa = Siswa::count();
         return view('siswa.index', compact('siswa_list', 'jumlah_siswa'));
     }
 

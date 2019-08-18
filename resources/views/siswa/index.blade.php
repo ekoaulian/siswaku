@@ -48,8 +48,8 @@
 		<div class="pull-left">
 			<b> Jumlah siswa : {!! $jumlah_siswa !!}  </b>
 		</div>
-		<div class="pull-right">
-			Halaman
+		<div class="paging">
+			{{ $siswa_list -> links() }}
 		</div>
 	</div>
 	<br/>
