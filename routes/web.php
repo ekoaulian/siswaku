@@ -57,6 +57,8 @@ Route::get('siswa/create', 'SiswaController@create');
 //detail siswa per id
 Route::get('siswa/{siswa}', 'SiswaController@show');
 Route::post('siswa', 'SiswaController@store');
+Route::get('siswa/{siswa}/edit', 'SiswaController@edit');
+Route::patch('siswa/{siswa}', 'SiswaController@update');
 
 //sample data siswa insert ke database(rest)
 // Route::get('sampledata', function() {
