@@ -9,7 +9,7 @@ class SiswaController extends Controller
 {
     public function index() {
         
-        $siswa_list = Siswa::orderBy('nama_siswa' , 'asc') -> paginate(10);  
+        $siswa_list = Siswa::orderBy('nama_siswa' , 'asc') -> paginate(5);  
         //sortir by descending
         //$siswa_list = Siswa::all()->sortByDesc('tanggal_lahir');
         //menampilkan jumlah siswa
@@ -64,6 +64,16 @@ class SiswaController extends Controller
         return redirect ('siswa');
     }
 
+    public function dateMutator() {
+        $siswa = Siswa::findOrFail(1);
+        $nama = $siswa -> nama_siswa;
+        $tanggal_lahir = $siswa -> tanggal_lahir -> format('d-m-Y');
+        $ulang_tahun = $siswa -> tanggal_lahir -> addYears(30) -> format('d-m-Y');
+        return "Siswa {$nama} lahir pada {$tanggal_lahir} . <br/> Ulang tahun Ke-30 akan jatuh pada {$ulang_tahun}.";
+        
+    }
+    
+  
     // protected $request;
 
     // public function __construct(Request $req)

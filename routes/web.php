@@ -61,6 +61,8 @@ Route::get('siswa/{siswa}/edit', 'SiswaController@edit');
 Route::patch('siswa/{siswa}', 'SiswaController@update');
 Route::delete('siswa/{siswa}', 'SiswaController@destroy');
 
+Route::get('date-mutator', 'SiswaController@dateMutator');
+
 //sample data siswa insert ke database(rest)
 // Route::get('sampledata', function() {
 //     DB::table('siswa')->insert([

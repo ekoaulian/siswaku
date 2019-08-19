@@ -20,7 +20,7 @@
 				<tr>
 					<td> {{ $siswa->nisn }} </td>
 					<td> {{ $siswa->nama_siswa }} </td>
-					<td> {{ $siswa->tanggal_lahir }} </td>
+					<td> {{ $siswa->tanggal_lahir -> format('d-m-Y') }} </td>
 					<td> {{ $siswa->jenis_kelamin }} </td>
 					<td>
 						<div class="box-button"> 

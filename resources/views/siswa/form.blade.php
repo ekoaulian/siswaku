@@ -8,7 +8,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('tanggal_lahir', 'Tanggal Lahir:', ['class' => 'control-label']) !!}
-                    {!! Form::date('tanggal_lahir', null, ['class' => 'form-control', 'id' => 'tanggal_lahir']) !!}
+                    {!! Form::date('tanggal_lahir', !empty($siswa) ? $siswa -> tanggal_lahir -> format('Y-m-d') : null, ['class' => 'form-control', 'id' => 'tanggal_lahir']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('jenis_kelamin', 'Jenis Kelamin:', ['class' => 'control-label']) !!}
