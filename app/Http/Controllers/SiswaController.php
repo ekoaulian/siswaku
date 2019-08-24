@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Siswa;
+use App\Telepon;
 
 class SiswaController extends Controller
 {
@@ -25,7 +26,12 @@ class SiswaController extends Controller
     //simpan dalam request
     public function store(Request $request) {
         $input = $request->all();
-        Siswa::create($input);
+        $siswa = Siswa::create($input);
+
+        $telepon = new Telepon;
+        $telepon->nomor_telepon = $request->input('nomor_telepon');
+        $siswa->telepon()->save($telepon);
+
         return redirect('siswa');
 
         // $siswa = new Siswa;
@@ -49,12 +55,40 @@ class SiswaController extends Controller
 
     public function edit($id) {
         $siswa = Siswa::findOrFail($id);
+
+        if (!empty($siswa->telepon->nomor_telepon)) {
+            $siswa->nomor_telepon = $siswa->telepon->nomor_telepon;
+        }
+
         return view('siswa.edit', compact('siswa'));
     }
 
     public function update($id, Request $request) {
         $siswa = Siswa::findOrFail($id);
         $siswa -> update ($request -> all());
+
+        //update nomor telepon
+        if ($siswa->telepon) {
+            //jika diisi update
+            if ($request->filled('nomor_telepon')) {
+                $telepon = $siswa->telepon;
+                $telepon->nomor_telepon = $request->input('nomor_telepon');
+                $siswa->telepon()->save($telepon);
+            }
+            //jika telp tidak diisi, hapus
+            else {
+                $siswa->telepon()->delete();
+            }
+        }
+            //buat entri baru jika sebelumnya tidak ada no telp
+            else {
+                if ($request->filled('nomor_telepon')) {
+                    $telepon = new Telepon;
+                    $telepon->nomor_telepon = $request->input('nomor_telepon');
+                    $siswa->telepon()->save($telepon);
+                }
+            }
+
         return redirect ('siswa');
     }
 

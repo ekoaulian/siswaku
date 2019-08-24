@@ -22,6 +22,10 @@ class Siswa extends Model
         return ucwords($nama_siswa);
     }
 
+    public function telepon() {
+        return $this->hasOne('App\Telepon', 'id_siswa');
+    }
+
     //nama siswa pada create kata ke dua kapital
     // public function setNamaSiswaAttribute($nama_siswa) {
     //     return strtolower($nama_siswa);

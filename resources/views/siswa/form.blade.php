@@ -1,14 +1,14 @@
                 <div class="form-group">
                     {!! Form::label('nisn', 'Nisn:', ['class' => 'control-label']) !!}
-                    {!! Form::text('nisn', null, ['class' => 'form-control', 'autocomplete' => 'off']) !!}
+                    {!! Form::text('nisn', null, ['class' => 'form-control', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57', 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('nama_siswa', 'Nama Siswa:', ['class' => 'control-label']) !!}
-                    {!! Form::text('nama_siswa', null, ['class' => 'form-control', 'autocomplete' => 'off']) !!}
+                    {!! Form::text('nama_siswa', null, ['class' => 'form-control', 'autocomplete' => 'off', 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('tanggal_lahir', 'Tanggal Lahir:', ['class' => 'control-label']) !!}
-                    {!! Form::date('tanggal_lahir', !empty($siswa) ? $siswa -> tanggal_lahir -> format('Y-m-d') : null, ['class' => 'form-control', 'id' => 'tanggal_lahir']) !!}
+                    {!! Form::date('tanggal_lahir', !empty($siswa) ? $siswa -> tanggal_lahir -> format('Y-m-d') : null, ['class' => 'form-control', 'id' => 'tanggal_lahir', 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('jenis_kelamin', 'Jenis Kelamin:', ['class' => 'control-label']) !!}
@@ -18,6 +18,10 @@
                         <div class="radio">
                             <label> {!! Form::radio('jenis_kelamin', 'P') !!} Perempuan</label>
                         </div>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('nomor_telepon', 'Telepon:', ['class' => 'control-label']) !!}
+                    {!! Form::text('nomor_telepon', null, ['class' => 'form-control', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57', 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}

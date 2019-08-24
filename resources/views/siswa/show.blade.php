@@ -21,6 +21,10 @@
 				<th>Jenis kelamin</th>
 				<th>{{ $siswa->jenis_kelamin }}</th>
 			</tr>
+			<tr>
+				<th>Telepon</th>
+				<th>{{ !empty($siswa->telepon->nomor_telepon) ? $siswa->telepon->nomor_telepon : '-' }}</th>
+			</tr>
 		</table>	
 </div>
 
