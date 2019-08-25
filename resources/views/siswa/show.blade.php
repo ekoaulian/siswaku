@@ -29,6 +29,14 @@
 				<th>Telepon</th>
 				<th>{{ !empty($siswa->telepon->nomor_telepon) ? $siswa->telepon->nomor_telepon : '-' }}</th>
 			</tr>
+			<tr>
+				<th>Hobi</th>
+				<th>
+					@foreach($siswa -> hobi as $item)
+						<span>{{ $item->nama_hobi }}</span>, 
+					@endforeach
+				</th>
+			</tr>
 		</table>	
 </div>
 

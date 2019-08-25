@@ -31,6 +31,14 @@ class Siswa extends Model
         return $this->belongsTo('App\Kelas', 'id_kelas');
     }
 
+    public function hobi() {
+        return $this->belongsToMany('App\Hobi', 'hobi_siswa', 'id_siswa', 'id_hobi')->withTimeStamps();
+    }
+    
+    public function getHobiSiswaAttribute() {
+        return $this->hobi->pluck('id')->toArray();
+    }
+
     //nama siswa pada create kata ke dua kapital
     // public function setNamaSiswaAttribute($nama_siswa) {
     //     return strtolower($nama_siswa);

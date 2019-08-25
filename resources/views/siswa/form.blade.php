@@ -32,5 +32,17 @@
                     {!! Form::text('nomor_telepon', null, ['class' => 'form-control', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57', 'required']) !!}
                 </div>
                 <div class="form-group">
+                    {!! Form::label('hobi_siswa', 'Hobi:', ['class' => 'control-label']) !!}
+                        @if(count($list_hobi) > 0)
+                            @foreach($list_hobi as $key => $value)
+                                <div class="checkbox">
+                                    <label>{!! Form::checkbox('hobi_siswa[]', $key, null) !!} {{ $value }} </label>
+                                </div>
+                            @endforeach
+                        @else
+                            <p>tidah ada pilihan Hobi,, hubungi admin</p>
+                        @endif
+                </div>
+                <div class="form-group">
                     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
                 </div>
