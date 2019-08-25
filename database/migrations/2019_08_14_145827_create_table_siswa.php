@@ -19,6 +19,7 @@ class CreateTableSiswa extends Migration
             $table->string('nama_siswa', 30);
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->integer('id_kelas')->unsigned();
             $table->timestamps();
         });
     }

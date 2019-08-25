@@ -14,8 +14,18 @@ class CreateTableKelas extends Migration
     public function up()
     {
         Schema::create('kelas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
+            $table->string('nama_kelas', 20);
             $table->timestamps();
+        });
+
+        //set FK dikolom id_kelas ditable siswa
+        Schema::table('siswa', function (Blueprint $table) {
+            $table  ->foreign('id_kelas')
+                    ->references('id')
+                    ->on('kelas')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 
@@ -26,6 +36,10 @@ class CreateTableKelas extends Migration
      */
     public function down()
     {
+        //drop FK dikolom id_kelas ditable siswa
+        Schema::table('siswa', function (Blueprint $table ){
+            $table->dropForeign('siswa_id_kelas_foreign');
+        });
         Schema::dropIfExists('kelas');
     }
 }

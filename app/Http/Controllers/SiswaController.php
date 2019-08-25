@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Siswa;
 use App\Telepon;
+use App\Kelas;
 
 class SiswaController extends Controller
 {
@@ -20,7 +21,8 @@ class SiswaController extends Controller
 
     //halaman create
     public function create() {
-        return view('siswa.create');
+        $list_kelas = Kelas::pluck('nama_kelas', 'id');
+        return view('siswa.create', compact('list_kelas'));
     }
 
     //simpan dalam request
@@ -55,12 +57,13 @@ class SiswaController extends Controller
 
     public function edit($id) {
         $siswa = Siswa::findOrFail($id);
+        $list_kelas = Kelas::pluck('nama_kelas', 'id');
 
         if (!empty($siswa->telepon->nomor_telepon)) {
             $siswa->nomor_telepon = $siswa->telepon->nomor_telepon;
         }
 
-        return view('siswa.edit', compact('siswa'));
+        return view('siswa.edit', compact('siswa', 'list_kelas'));
     }
 
     public function update($id, Request $request) {

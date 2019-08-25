@@ -11,6 +11,14 @@
                     {!! Form::date('tanggal_lahir', !empty($siswa) ? $siswa -> tanggal_lahir -> format('Y-m-d') : null, ['class' => 'form-control', 'id' => 'tanggal_lahir', 'required']) !!}
                 </div>
                 <div class="form-group">
+                    {!! Form::label('id_kelas', 'Kelas:', ['class' => 'control-label']) !!}
+                    @if (count($list_kelas) > 0 )
+                    {!! Form::select('id_kelas', $list_kelas, null, ['class' => 'form-control', 'id' => 'id_kelas', 'placeholder' => 'Pilih Kelas Bro']) !!}
+                    @else
+                        <p>Tidak ada pilihan kelas, input dulu broo!</p>
+                    @endif
+                </div>
+                <div class="form-group">
                     {!! Form::label('jenis_kelamin', 'Jenis Kelamin:', ['class' => 'control-label']) !!}
                         <div class="radio">
                             <label> {!! Form::radio('jenis_kelamin', 'L') !!} Laki-laki</label>

@@ -13,6 +13,10 @@
 				<th>Nama</th>
 				<th>{{ $siswa->nama_siswa }}</th>
 			</tr>
+			<tr>
+				<th>Kelas</th>
+				<th>{{ $siswa->kelas->nama_kelas }}</th>
+			</tr>
             <tr>
 				<th>Tanggal lahir</th>
 				<th>{{ $siswa->tanggal_lahir -> format('d-m-Y')}}</th>

@@ -10,6 +10,7 @@
 				<tr>
 					<th>NISN</th>
 					<th>Nama Siswa</th>
+					<th>Kelas</th>
 					<th>Tanggal Lahir</th>
 					<th>Jenis Kelamin</th>
 					<th>Telepon</th>
@@ -21,6 +22,7 @@
 				<tr>
 					<td> {{ $siswa->nisn }} </td>
 					<td> {{ $siswa->nama_siswa }} </td>
+					<td> {{ $siswa->kelas->nama_kelas }} </td>
 					<td> {{ $siswa->tanggal_lahir -> format('d-m-Y') }} </td>
 					<td> {{ $siswa->jenis_kelamin }} </td>
 					<td> {{ !empty($siswa->telepon->nomor_telepon) ? $siswa->telepon->nomor_telepon : '-' }} </td>
