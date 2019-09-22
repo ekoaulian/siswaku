@@ -44,5 +44,9 @@
                         @endif
                 </div>
                 <div class="form-group">
+                    {!! Form::label('foto', 'Foto:') !!}
+                    {!! Form::file('foto', ['class' => 'form-control', 'accept' => 'image/*']) !!}
+                </div>
+                <div class="form-group">
                     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
                 </div>

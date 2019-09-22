@@ -37,6 +37,20 @@
 					@endforeach
 				</th>
 			</tr>
+			<tr>
+				<th>Foto</th>
+				<th>
+					@if (isset($siswa->foto))
+					<img class="img-rounded" width="150" src="{{ asset('fotoupload/' . $siswa->foto) }}">
+					@else
+						@if ($siswa->jenis_kelamin == 'L')
+					<img width="150" src="{{ asset('fotoupload/dummymale.jpg') }}">
+						@else
+					<img width="150" src="{{ asset('fotoupload/dummyfemale.jpg') }}">
+						@endif
+					@endif
+				</th>
+			</tr>
 		</table>	
 </div>
 

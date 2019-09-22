@@ -7,6 +7,7 @@ use App\Siswa;
 use App\Telepon;
 use App\Kelas;
 use App\Hobi;
+use App\Storage;
 
 class SiswaController extends Controller
 {
@@ -30,6 +31,17 @@ class SiswaController extends Controller
     //simpan dalam request
     public function store(Request $request) {
         $input = $request->all();
+        //upload foto
+        if ($request->hasFile('foto')){
+            $foto   = $request->file('foto');
+            $ext    = $foto->getClientOriginalExtension();
+            if ($request->file('foto')->isValid()) {
+                $foto_name      = date('YmdHis'). ".$ext";
+                $upload_path    = 'fotoupload';
+                $request->file('foto')->move($upload_path, $foto_name);
+                $input['foto']  = $foto_name;
+            }
+        }
         $siswa = Siswa::create($input);
 
         $telepon = new Telepon;
