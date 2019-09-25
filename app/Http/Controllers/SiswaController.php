@@ -133,6 +133,8 @@ class SiswaController extends Controller
             }
         
         $siswa->hobi()->sync($request->input('hobi_siswa'));
+        // Flash input / alert
+        Session::flash('flash_message', 'Data Berhasill Diupdate...');
         return redirect ('siswa');
     }
 
@@ -145,6 +147,9 @@ class SiswaController extends Controller
         }
         //$siswa = Siswa::findOrFail($id);
         $siswa -> delete();
+        // Flash input / alert
+        Session::flash('flash_message', 'Data Berhasill Dihapus...');
+        Session::flash('penting', true);
         return redirect ('siswa');
     }
 
