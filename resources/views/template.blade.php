@@ -18,5 +18,6 @@
 
 <script src="{{ asset('js/jquery_2_2_1.min.js') }}"></script>
 <script src="{{ asset('bootstrap_3_3_6/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/alert.js') }}"></script>
 </body>
 </html>

@@ -1,0 +1,1 @@
+$('div.alert').not('.alert-important').delay(5000).slideIp(300);

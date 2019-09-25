@@ -7,7 +7,9 @@ use App\Siswa;
 use App\Telepon;
 use App\Kelas;
 use App\Hobi;
-use App\Storage;
+use Storage;
+use Session;
+//use App\Http\Requests\SiswaRequest;
 
 class SiswaController extends Controller
 {
@@ -50,6 +52,8 @@ class SiswaController extends Controller
 
         $siswa->hobi()->attach($request->input('hobi_siswa'));
 
+        // Flash input / alert
+        Session::flash('flash_message', 'Data Berhasill Disimpan...');
         return redirect('siswa');
 
         // $siswa = new Siswa;
@@ -83,11 +87,30 @@ class SiswaController extends Controller
         return view('siswa.edit', compact('siswa', 'list_kelas', 'list_hobi'));
     }
 
-    public function update($id, Request $request) {
-        $siswa = Siswa::findOrFail($id);
-        $siswa -> update ($request -> all());
-
+    // public function update($id, Request $request) {
+    public function update(Siswa $siswa, Request $request) {
+        //$siswa = Siswa::findOrFail($id);
+        //$siswa -> update ($request -> all());
+        $input = $request -> all();
+        // edit foto
+        if ($request->hasFile('foto')){
+            //hapus photo lama jika ada fotonya
+            $exist = Storage::disk('foto')->exists($siswa->foto);
+            if (isset($siswa->foto) && $exist){
+                $delete = Storage::disk('foto')->delete($siswa->foto);
+            }
+            //upload baru
+            $foto   = $request->file('foto');
+            $ext    = $foto->getClientOriginalExtension();
+            if ($request->file('foto')->isValid()) {
+                $foto_name      = date('YmdHis'). ".$ext";
+                $upload_path    = 'fotoupload';
+                $request->file('foto')->move($upload_path, $foto_name);
+                $input['foto']  = $foto_name;
+            }
+        }
         //update nomor telepon
+        $siswa->update($input);
         if ($siswa->telepon) {
             //jika diisi update
             if ($request->filled('nomor_telepon')) {
@@ -113,8 +136,14 @@ class SiswaController extends Controller
         return redirect ('siswa');
     }
 
-    public function destroy($id) {
-        $siswa = Siswa::findOrFail($id);
+    //public function destroy($id){
+    public function destroy(Siswa $siswa) {
+        // hapus kalau ada fotonya
+        $exist = Storage::disk('foto')->exists($siswa->foto);
+        if (isset($siswa->foto) && $exist){
+            $delete = Storage::disk('foto')->delete($siswa->foto);
+        }
+        //$siswa = Siswa::findOrFail($id);
         $siswa -> delete();
         return redirect ('siswa');
     }

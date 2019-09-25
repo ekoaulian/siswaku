@@ -47,6 +47,18 @@
                     {!! Form::label('foto', 'Foto:') !!}
                     {!! Form::file('foto', ['class' => 'form-control', 'accept' => 'image/*']) !!}
                 </div>
+                <!-- menampilkan foto -->
+                @if (isset($siswa))
+                    @if (isset($siswa->foto))
+					<img class="img-rounded" width="150" src="{{ asset('fotoupload/' . $siswa->foto) }}">
+					@else
+						@if ($siswa->jenis_kelamin == 'L')
+					<img width="150" src="{{ asset('fotoupload/dummymale.jpg') }}">
+						@else
+					<img width="150" src="{{ asset('fotoupload/dummyfemale.jpg') }}">
+						@endif
+					@endif
+                @endif
                 <div class="form-group">
                     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
                 </div>

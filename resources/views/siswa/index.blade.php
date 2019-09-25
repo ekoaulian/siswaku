@@ -4,7 +4,9 @@
 <div id="siswa">
 	<h2>Siswa</h2>
 	<hr>
+	@include('_partial.flash_message')
 	@if (!empty($siswa_list))
+	<div class="table-responsive">
 		<table class="table">
 			<thead>
 				<tr>
@@ -43,7 +45,7 @@
 				<?php endforeach ?>
 			</tbody>
 		</table>
-	
+	</div>
 	@else
 		<p>Tidak ada data siswa</p>
 	@endif	
