@@ -37,7 +37,7 @@
 						</div>
 						<div class="box-button">
 							{!! Form::open(['method' => 'DELETE' , 'action' => ['SiswaController@destroy' , $siswa -> id]]) !!}
-							{!! Form::submit('Delete' , ['class' => 'btn btn-danger btn-sm']) !!}
+							{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm', "onclick" => "return confirm('Yakin ingin menghapus?')" ]) !!}
 							{!! Form::close() !!}
 						</div>
 					</td>
