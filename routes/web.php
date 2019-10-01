@@ -52,14 +52,15 @@ Route::get('/', 'PagesController@homepage');
 Route::get('about', 'PagesController@about');
 
 //siswa
-Route::get('siswa', 'SiswaController@index');
-Route::get('siswa/create', 'SiswaController@create');
-//detail siswa per id
-Route::get('siswa/{siswa}', 'SiswaController@show');
-Route::post('siswa', 'SiswaController@store');
-Route::get('siswa/{siswa}/edit', 'SiswaController@edit');
-Route::patch('siswa/{siswa}', 'SiswaController@update');
-Route::delete('siswa/{siswa}', 'SiswaController@destroy');
+// Route::get('siswa', 'SiswaController@index');
+// Route::get('siswa/create', 'SiswaController@create');
+// Route::get('siswa/{siswa}', 'SiswaController@show');
+// Route::post('siswa', 'SiswaController@store');
+// Route::get('siswa/{siswa}/edit', 'SiswaController@edit');
+// Route::patch('siswa/{siswa}', 'SiswaController@update');
+// Route::delete('siswa/{siswa}', 'SiswaController@destroy');
+route::resource('siswa', 'SiswaController');
+route::resource('kelas', 'SiswaController')->parameters(['kelas'=>'kelas']);
 
 Route::get('date-mutator', 'SiswaController@dateMutator');
 
